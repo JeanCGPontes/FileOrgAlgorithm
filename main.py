@@ -2,9 +2,21 @@
 # SoftOrgDocuments — Software de Organização de Documentos.
 
 import functions
+import os
 
-image_1 = r"C:\Users\jeane\OneDrive\Imagens\Fotos do Computador da Thalia\20170630_114638.jpg"
-image_2 = r"C:\Users\jeane\OneDrive\Imagens\Fotos do Computador da Thalia\20170630_114710.jpg"
+path = r"E:\Programação\Python\Projetos\SoftOrgDocuments\arquivo_com_fotos"
 
-print(functions.getDateImage(image_1))
-print(functions.getDateImage(image_2))
+for a in range(0, len(os.listdir(path))):
+    image_directory = fr"{path}\{os.listdir(path)[a]}"
+    print(functions.getDateImage(image_directory))
+
+
+"""for file in os.listdir(path):
+    print(functions.getDateImage(fr"{path}\{file}"))"""
+
+
+
+"""for directory, folders, files in os.walk(folder):
+    for file in files:
+        image_directory = os.path.join(os.path.realpath(directory), file)
+        print(functions.getDateImage(image_directory))"""
