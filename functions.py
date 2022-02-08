@@ -10,12 +10,14 @@ def getDateImage(image):
         property_2 = image.get("datetime_digitized")
         property_3 = image.get("datetime")
 
-        return {"data_original": property_1[0:10].replace(":", "/"),
-                "data_digitalizada": property_2[0:10].replace(":", "/"),
-                "data_modificada": property_3[0:10].replace(":", "/")}
+        return {"data_original": formatDate(property_1),
+                "data_digitalizada": formatDate(property_2),
+                "data_modificada": formatDate(property_3)}
 
     else:
-        return None
+        return {"data_original": "not found!",
+                "data_digitalizada": "not found!",
+                "data_modificada": "not found!"}
 
 
 def getFileType(file):
@@ -33,3 +35,11 @@ def getFileType(file):
         classe = "outro"
 
     return {"tipo": file_type, "classe": classe}
+
+
+def formatDate(datetime):
+    try:
+        return datetime[0:10].replace(":", "/")
+
+    except TypeError:
+        return "not found!"
