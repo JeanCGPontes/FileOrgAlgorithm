@@ -1,4 +1,5 @@
 # Funções do programa.
+import os
 
 from exif import Image
 
@@ -28,7 +29,7 @@ def getFileType(file):
     elif file_type in [".aac", ".mp3", ".wav", ".wma", ".dolby®", ".digital", ".dts"]:
         classe = "música"
 
-    elif file_type in [".mpeg-1", ".mpeg-2", ".mpeg-4", ".avi", ".mov", ".avchd", ".mkv", ".mp4"]:
+    elif file_type in [".mpeg-1", ".mpeg-2", ".mpeg-4", ".avi", ".mov", ".avchd", ".mkv", ".mp4", ".3gp"]:
         classe = "vídeo"
 
     else:
@@ -43,3 +44,14 @@ def formatDate(datetime):
 
     except TypeError:
         return "not found!"
+
+
+def getFolders(path):
+    directory_list = []
+    list_folder_names = []
+    for directory, folders, _ in os.walk(path):
+        for folder in folders:
+            directory_list.append(os.path.join(directory, folder).replace("\\", "/"))
+            list_folder_names.append(folder)
+
+    return {"nomes": list_folder_names, "diretorios": directory_list}
