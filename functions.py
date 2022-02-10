@@ -24,16 +24,16 @@ def getDateImage(image):
 def getFileType(file):
     file_type = file[file.find("."):len(file)].lower()
     if file_type in [".jpeg", ".gif", ".png", ".tiff", ".bmp", ".jpg"]:
-        classe = "imagem"
+        classe = "Imagem"
 
     elif file_type in [".aac", ".mp3", ".wav", ".wma", ".dolby®", ".digital", ".dts"]:
-        classe = "música"
+        classe = "Música"
 
     elif file_type in [".mpeg-1", ".mpeg-2", ".mpeg-4", ".avi", ".mov", ".avchd", ".mkv", ".mp4", ".3gp"]:
-        classe = "vídeo"
+        classe = "Vídeo"
 
     else:
-        classe = "outro"
+        classe = None
 
     return {"tipo": file_type, "classe": classe}
 
