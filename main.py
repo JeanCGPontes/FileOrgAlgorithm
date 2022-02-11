@@ -1,26 +1,41 @@
-# Será usado para este programa o paradigma procedural
-# SoftOrgArquivos — Software de Organização de Documentos
+# FileOrgAlgorithm — Algoritmo de Organização de Arquivos
 
 import os
 import shutil
+import sys
 
 import functions
 
-path = r"E:\Programação\Python\Projetos\SoftOrgArquivos\arquivo_teste"
+print(r"""
+                 .__________________.
+   .____________/  FileOrgAlgorithm  \____________.
+  /                                                \
+ /       Algoritmo de Organização de Arquivos       \
+:                                                    :
+| CMD: python main.py diretório_da_pasta |
+:____________________________________________________:
+""")
 
-for file in os.listdir(path):
-    file_directory = fr"{path}\{file}"
-    file_type = functions.getFileType(file_directory)["classe"]
+try:
+    path = sys.argv[1]
 
-    if file_type is None:
-        continue
+    for file in os.listdir(path):
+        file_directory = fr"{path}\{file}"
+        file_type = functions.getFileType(file_directory)["classe"]
 
-    if not os.path.exists(fr"{path}\{file_type}"):
-        print(fr"Criado {path}\{file_type}")
-        os.makedirs(fr"{path}\{file_type}")
-        print(fr"{file} -+> {path}\{file_type}")
-        shutil.move(src=file_directory, dst=fr"{path}\{file_type}\{file}")
+        if file_type is None:
+            continue
 
-    else:
-        print(fr"{file} -+> {path}\{file_type}")
-        shutil.move(src=file_directory, dst=fr"{path}\{file_type}\{file}")
+        if not os.path.exists(fr"{path}\{file_type}"):
+            os.makedirs(fr"{path}\{file_type}")
+            print(fr"Criado -+> {file_type}")
+            shutil.move(src=file_directory, dst=fr"{path}\{file_type}\{file}")
+            print(fr"Transferido {file} -+> {file_type}")
+
+        else:
+            shutil.move(src=file_directory, dst=fr"{path}\{file_type}\{file}")
+            print(fr"Transferido {file} -+> {file_type}")
+
+
+except IndexError:
+    print("Erro: Falta o diretório da pasta!")
