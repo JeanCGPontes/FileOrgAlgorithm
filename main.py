@@ -1,11 +1,12 @@
-# Será usado para este programa o paradigma procedural.
-# SoftOrgDocuments — Software de Organização de Documentos.
+# Será usado para este programa o paradigma procedural
+# SoftOrgArquivos — Software de Organização de Documentos
+
 import os
 import shutil
 
 import functions
 
-path = r"E:\Programação\Python\Projetos\SoftOrgDocumentos\arquivo"
+path = r"E:\Programação\Python\Projetos\SoftOrgArquivos\arquivo_teste"
 
 for file in os.listdir(path):
     file_directory = fr"{path}\{file}"
