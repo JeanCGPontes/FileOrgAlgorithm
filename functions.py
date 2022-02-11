@@ -26,4 +26,4 @@ def getFileType(file):
     else:
         classe = None
 
-    return {"tipo": file, "classe": classe}
+    return {"tipo": extension, "classe": classe}
