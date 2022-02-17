@@ -12,12 +12,13 @@ print(r"""
   /                                                \
  /       Algoritmo de Organização de Arquivos       \
 :                                                    :
-| CMD: python main.py diretório_da_pasta |
+|       CMD: python main.py diretório_da_pasta       |
 :____________________________________________________:
 """)
 
 try:
     path = sys.argv[1]
+    folders, images, videos, music, documents, compact, executable = 0, 0, 0, 0, 0, 0, 0
 
     for file in os.listdir(path):
         file_directory = fr"{path}\{file}"
@@ -35,6 +36,12 @@ try:
         else:
             shutil.move(src=file_directory, dst=fr"{path}\{file_type}\{file}")
             print(fr"Transferido {file} -+> {file_type}")
+
+    print("""
+    *******************************
+    Processo finalizado com sucesso!
+    *******************************
+    """)
 
 
 except IndexError:
