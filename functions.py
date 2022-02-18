@@ -5,6 +5,7 @@ import os
 
 def getFileType(file):
     _, extension = os.path.splitext(file)
+    extension = extension.lower()
     if extension in [".jpeg", ".gif", ".png", ".tiff", ".bmp", ".jpg"]:
         classe = "Imagem"
 
