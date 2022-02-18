@@ -27,22 +27,45 @@ try:
         if file_type is None:
             continue
 
+        elif file_type == "Imagem":
+            images += 1
+
+        elif file_type == "Música":
+            music += 1
+
+        elif file_type == "Vídeo":
+            videos += 1
+
+        elif file_type == "Documento":
+            documents += 1
+
+        elif file_type == "Compacto":
+            compact += 1
+
+        elif file_type == "Executável":
+            executable += 1
+
         if not os.path.exists(fr"{path}\{file_type}"):
             os.makedirs(fr"{path}\{file_type}")
             print(fr"Criado -+> {file_type}")
-            shutil.move(src=file_directory, dst=fr"{path}\{file_type}\{file}")
-            print(fr"Transferido {file} -+> {file_type}")
+            folders += 1
 
         else:
             shutil.move(src=file_directory, dst=fr"{path}\{file_type}\{file}")
             print(fr"Transferido {file} -+> {file_type}")
 
-    print("""
+    print(f"""
     *******************************
     Processo finalizado com sucesso!
-    *******************************
-    """)
-
+    Tranferidos:
+        >{images} Imagens;
+        >{videos} Vídeos;
+        >{music} Músicas;
+        >{documents} Documentos;
+        >{compact} Compactos;
+        >{executable} Executável.
+    Criados {folders} pastas.
+    *******************************""")
 
 except IndexError:
     print("Erro: Falta o diretório da pasta!")
