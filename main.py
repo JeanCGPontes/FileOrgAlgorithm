@@ -7,14 +7,9 @@ import sys
 import functions
 
 print(r"""
-                 .__________________.
-   .____________/  FileOrgAlgorithm  \____________.
-  /                                                \
- /       Algoritmo de Organização de Arquivos       \
-:                                                    :
-|       CMD: python main.py diretório_da_pasta       |
-:____________________________________________________:
-""")
+    ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+    FileOrgAlgorithm
+    ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨""")
 
 try:
     path = sys.argv[1]
@@ -48,6 +43,8 @@ try:
         if not os.path.exists(fr"{path}\{file_type}"):
             os.makedirs(fr"{path}\{file_type}")
             print(fr"Criado -+> {file_type}")
+            shutil.move(src=file_directory, dst=fr"{path}\{file_type}\{file}")
+            print(fr"Transferido {file} -+> {file_type}")
             folders += 1
 
         else:
@@ -55,17 +52,17 @@ try:
             print(fr"Transferido {file} -+> {file_type}")
 
     print(f"""
-    *******************************
+    ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
     Processo finalizado com sucesso!
-    Tranferidos:
+    Transferidos:
         >{images} Imagens;
         >{videos} Vídeos;
         >{music} Músicas;
         >{documents} Documentos;
         >{compact} Compactos;
         >{executable} Executável.
-    Criados {folders} pastas.
-    *******************************""")
+    Criado {folders} pastas.
+    ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨""")
 
 except IndexError:
     print("Erro: Falta o diretório da pasta!")
