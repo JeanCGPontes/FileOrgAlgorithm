@@ -42,10 +42,10 @@ try:
 
         if not os.path.exists(fr"{path}\{file_type}"):
             os.makedirs(fr"{path}\{file_type}")
+            folders += 1
             print(fr"Criado -+> {file_type}")
             shutil.move(src=file_directory, dst=fr"{path}\{file_type}\{file}")
             print(fr"Transferido {file} -+> {file_type}")
-            folders += 1
 
         else:
             shutil.move(src=file_directory, dst=fr"{path}\{file_type}\{file}")
